@@ -6,12 +6,20 @@ require("./models/db");
 const app = express();
 const PORT = 5000;
 
+const usersRouter=require("./routes/users")
+const carsRouter=require("./routes/cars")
+const loginRouter=require("./routes/login")
+
 app.use(cors());
 app.use(express.json());
 
+
+
+
 // Import Routers
-
-
+app.use("/cars",carsRouter);
+app.use("/users", usersRouter);
+app.use("/login", loginRouter);
 
 // Routes Middleware
 
