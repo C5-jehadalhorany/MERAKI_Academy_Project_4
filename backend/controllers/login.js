@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 
-
 const login = (req, res) => {
     const password = req.body.password;
     const email = req.body.email
