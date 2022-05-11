@@ -1,78 +1,86 @@
-const cars = require("../models/cars")
-const carsModel = require("../models/cars")
+const cars = require("../models/cars");
+const carsModel = require("../models/cars");
+const CategoryModel = require("../models/category");
 
-
-
-// the function for add the cars 
+// the function for add the cars
 const addCar = (req, res) => {
-    const { name, model, pirce, description, status } = req.body
+    const { name, model, pirce, description, status, categoryer } = req.body;
     const car = new carsModel({
         name: name,
         model: model,
         pirce: pirce,
         description: description,
-        status: status
-    })
-    car.save().then((result) => {
-        res.status(201).json({
-            success: true,
-            message: `car Created Successfully`,
-            result: result
+        status: status,
+        categoryer: categoryer,
+    });
+    car
+        .save()
+        .then((result) => {
+            res.status(201).json({
+                success: true,
+                message: `car Created Successfully`,
+                result: result,
+            });
         })
-    }).catch((err) => {
-        res.status(409).json({
-            success: false,
-            message: `The car already exists`,
+        .catch((err) => {
+            res.status(409).json({
+                success: false,
+                message: `The car already exists`,
+            });
         });
-    })
-}
-
+};
 
 // this function fro getAllCars
 const getAllCar = (req, res) => {
-    carsModel.find({}).then((result) => {
-        if (cars.length) {
-            res.status(200).json({
-                success: true,
-                message: `All the cars`,
-                result: result
-            })
-        } else {
-            res.status(200).json({
-                success: false,
-                message: `No cars Yet`,
-            });
-        }
-    }).catch((err) => {
-        res.status(500).json({
-            success: false,
-            message: `Server Error`,
-            err: err.message,
-        });
-    })
-}
-
-
-
-// the function back car in Id 
-const getCarById = (req, res) => {
-    const { id } = req.params
-    carsModel.findById({ _id: id }).populate("_id")
-        .exec().then((result) => {
-            console.log(result);
-            if (result._id == id) {
+    console.log(req.token);
+    carsModel
+        .find({})
+        .then((result) => {
+            if (cars.length) {
                 res.status(200).json({
                     success: true,
-                    message: `car by id `,
-                    result: result
-                })
+                    message: `All the cars`,
+                    result: result,
+                });
             } else {
                 res.status(200).json({
                     success: false,
                     message: `No cars Yet`,
                 });
             }
-        }).catch((err) => {
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                message: `Server Error`,
+                err: err.message,
+            });
+        });
+};
+
+// the function back car in Id
+const getCarById = (req, res) => {
+    const { id } = req.params;
+    carsModel
+        .findById({ _id: id })
+        .populate("_id")
+        .exec()
+        .then((result) => {
+            console.log(result);
+            if (result._id == id) {
+                res.status(200).json({
+                    success: true,
+                    message: `car by id `,
+                    result: result,
+                });
+            } else {
+                res.status(200).json({
+                    success: false,
+                    message: `No cars Yet`,
+                });
+            }
+        })
+        .catch((err) => {
             console.log(err);
             res.status(500).json({
                 success: false,
@@ -80,12 +88,13 @@ const getCarById = (req, res) => {
                 err: err.message,
             });
         });
-}
+};
 
 // the function back car in name
 const getCarByName = (req, res) => {
-    const { name } = req.body
-    carsModel.findOne({ name: name })
+    const { name } = req.body;
+    carsModel
+        .findOne({ name: name })
         .populate("name")
         .exec()
         .then((result) => {
@@ -94,29 +103,30 @@ const getCarByName = (req, res) => {
                 res.status(200).json({
                     success: true,
                     message: `car by name `,
-                    result: result
-                })
+                    result: result,
+                });
             } else {
                 res.status(200).json({
                     success: false,
                     message: `No cars Yet`,
                 });
             }
-        }).catch((err) => {
+        })
+        .catch((err) => {
             res.status(500).json({
                 success: false,
                 message: `Server Error`,
                 err: err.message,
             });
-        })
-}
+        });
+};
 // updateId for cars لما بدي أستخدم الأبديت  لازم أحطله الأشياء الي بدي أعمل عليها تعديل وبعد هيك لازم أستدعي فايند باي اي دي اند اب ديت وهاي بتوخذ مني 3 براميتر الأول بتوخذه هو عباره عن الأي دي اما ثاني بتوخذه عباره عن الأشياء الي بدي أعمل عليها تعديل أما الثالث  ف هو نيو وبتوخذ قيمة بوليون ترو عشان يعمل تعديل على شي جديد
 const updateCarById = (req, res) => {
-    const { id } = req.params
-    const { model, pirce, description, status } = req.body
-    carsModel.findByIdAndUpdate(id,
-        { model, pirce, description, status },
-        { new: true }).then((result) => {
+    const { id } = req.params;
+    const { model, pirce, description, status } = req.body;
+    carsModel
+        .findByIdAndUpdate(id, { model, pirce, description, status }, { new: true })
+        .then((result) => {
             console.log(result);
             if (!result) {
                 return res.status(404).json({
@@ -129,40 +139,69 @@ const updateCarById = (req, res) => {
                 message: `car updated`,
                 result: req.body,
             });
-        }).catch((err) => {
+        })
+        .catch((err) => {
             console.log(err);
             res.status(500).json({
                 success: false,
                 message: "The car id is not Found",
-                err: err
-            })
-        })
-}
-
-// this is function for delete 
-const deleteCarbyId = (req, res) => {
-    const { id } = req.params
-    carsModel.findByIdAndDelete(id).then((result) => {
-        if (!result) {
-            return res.status(404).json({
-                success: false,
-                message: `The car: ${id} is not found`,
+                err: err,
             });
-        }
-        res.status(200).json({
-            success: true,
-            message: `car deleted`,
         });
-    }).catch((err) => {
-        res.status(500).json({
-            success: false,
-            message: `Server Error`,
-            err: err.message,
+};
+
+// this is function for delete
+const deleteCarbyId = (req, res) => {
+    const { id } = req.params;
+    carsModel
+        .findByIdAndDelete(id)
+        .then((result) => {
+            if (!result) {
+                return res.status(404).json({
+                    success: false,
+                    message: `The car: ${id} is not found`,
+                });
+            }
+            res.status(200).json({
+                success: true,
+                message: `car deleted`,
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                message: `Server Error`,
+                err: err.message,
+            });
         });
+};
+
+// getCarsByCategory
+const AddCarsByCategory = (req, res) => {
+    const { category } = req.body;
+    const newCategory = new CategoryModel({
+        category: category,
     });
-}
-
-
+    newCategory
+        .save()
+        .then((result) => {
+            console.log(result);
+            res.status(201).json({
+                success: true,
+                message: "Category added",
+                Category: result,
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+                success: false,
+                message: `Server Error`,
+                err: err.message,
+            });
+        });
+};
+///--------------------
 
 // تصدير عشان أشوفه في مكان ثاني وأقدر أخلي الراوتر يشتغل على الفنكشن
 module.exports = {
@@ -171,5 +210,6 @@ module.exports = {
     getCarById,
     getCarByName,
     updateCarById,
-    deleteCarbyId
-}
+    deleteCarbyId,
+    AddCarsByCategory,
+};

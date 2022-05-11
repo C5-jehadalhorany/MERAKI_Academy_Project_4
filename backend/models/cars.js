@@ -5,8 +5,9 @@ const car =new mongoose.Schema({
     model:{type:Number ,required:true,min:2015},
     pirce:{type:Number ,required:true},
     description:{type:String},
-    status:{type:Boolean,required:true}
-    
+    status:{type:Boolean,required:true},
+    //category: objectId
+    categoryer:{ type: mongoose.Schema.Types.ObjectId, ref :"category"}
 })
 
 module.exports=mongoose.model("Cars",car)
