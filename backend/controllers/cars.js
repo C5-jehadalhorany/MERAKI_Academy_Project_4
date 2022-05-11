@@ -110,17 +110,57 @@ const getCarByName = (req, res) => {
             });
         })
 }
-
+// updateId for cars لما بدي أستخدم الأبديت  لازم أحطله الأشياء الي بدي أعمل عليها تعديل وبعد هيك لازم أستدعي فايند باي اي دي اند اب ديت وهاي بتوخذ مني 3 براميتر الأول بتوخذه هو عباره عن الأي دي اما ثاني بتوخذه عباره عن الأشياء الي بدي أعمل عليها تعديل أما الثالث  ف هو نيو وبتوخذ قيمة بوليون ترو عشان يعمل تعديل على شي جديد
 const updateCarById = (req, res) => {
-    const { _id } = req.params
-    carsModel.findByIdAndUpdate(_id, req.body,
+    const { id } = req.params
+    const { model, pirce, description, status } = req.body
+    carsModel.findByIdAndUpdate(id,
+        { model, pirce, description, status },
         { new: true }).then((result) => {
             console.log(result);
+            if (!result) {
+                return res.status(404).json({
+                    success: false,
+                    message: `The car: ${id} is not found`,
+                });
+            }
+            res.status(202).json({
+                success: true,
+                message: `car updated`,
+                result: req.body,
+            });
         }).catch((err) => {
             console.log(err);
+            res.status(500).json({
+                success: false,
+                message: "The car id is not Found",
+                err: err
+            })
         })
 }
 
+// this is function for delete 
+const deleteCarbyId = (req, res) => {
+    const { id } = req.params
+    carsModel.findByIdAndDelete(id).then((result) => {
+        if (!result) {
+            return res.status(404).json({
+                success: false,
+                message: `The car: ${id} is not found`,
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: `car deleted`,
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+        });
+    });
+}
 
 
 
@@ -130,5 +170,6 @@ module.exports = {
     addCar,
     getCarById,
     getCarByName,
-    updateCarById
+    updateCarById,
+    deleteCarbyId
 }

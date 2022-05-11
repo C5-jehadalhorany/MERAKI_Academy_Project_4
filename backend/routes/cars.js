@@ -1,6 +1,6 @@
 const express= require("express");
 
-const {getAllCar,addCar,getCarById,getCarByName,updateCarById}=require("../controllers/cars");
+const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId}=require("../controllers/cars");
 
 const carsRouter =express.Router();
 
@@ -23,6 +23,8 @@ carsRouter.post("/",addCar);
 //for update
 carsRouter.put("/:id",updateCarById)
 
+//for delete 
+carsRouter.delete("/:id",deleteCarbyId)
 
 
 
