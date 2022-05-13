@@ -16,10 +16,10 @@ export const Register = () => {
       email: email,
       password: password
     }).then((result) => {
-      console.log(result);
+      setMassage(result);
 
     }).catch((err) => {
-      console.log(err);
+      setMassage(err.response.data.message);
     })
   }
 
@@ -37,12 +37,12 @@ export const Register = () => {
           setAge(e.target.value)
         }} />
 
-      <input type="text" placeholder='email'
+      <input type="email" placeholder='email'
         onChange={(e) => {
           setEmail(e.target.value)
         }} />
 
-      <input type="text" placeholder='password'
+      <input type="password" placeholder='password'
         onChange={(e) => {
           setPassword(e.target.value)
         }} />
@@ -50,7 +50,7 @@ export const Register = () => {
       <button onClick={dataServer}>Register</button>
 
       <p>
-        {massage}
+        massage{massage}
       </p>
     </div>
 
