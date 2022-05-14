@@ -6,7 +6,7 @@ import Dashboard from './components/Dashboard';
 import { Routes, Route, Link } from "react-router-dom";
 import { useState } from 'react'
 import React, { createContext } from "react";
-
+import Asc from './components/getAllcars/getAllCars';
 
 
 
@@ -23,9 +23,10 @@ function App() {
     <div className="App">
       <tokenContext.Provider value={(isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage)}>
 
-        <h1>جبت العيد للسيارات</h1>
+      <h1>جبت العيد للسيارات</h1>
         <Navbar className="Navbar" />
         <Routes>
+          
 
           <Route path='/' element={""} />
 
@@ -36,7 +37,8 @@ function App() {
           <Route path='/Dashboard' element={<Dashboard />} />
 
         </Routes>
-
+        <Asc/>
+       
       </tokenContext.Provider>
     </div>
   );
