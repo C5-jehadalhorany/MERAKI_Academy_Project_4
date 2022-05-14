@@ -13,7 +13,7 @@ export const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const { token, setToken } = useContext(tokenContext)
+  const { token, setToken, isLoggedIn, setIsLoggedIn } = useContext(tokenContext)
   const dataServer = () => {
     axios.post(("http://localhost:5000/login"), {
       email: email,
@@ -21,7 +21,7 @@ export const Login = () => {
     }).then((result) => {
       localStorage.getItem("token")
       console.log(result.data.token);
-      
+
       if (result) {
 
         navigate("/Dashboard")
@@ -29,7 +29,8 @@ export const Login = () => {
         console.log(result);
         setToken(result.data.token)
         localStorage.getItem("token")
-        
+        setIsLoggedIn("token"?true:false )
+      
       }
     }).catch((err) => {
       // console.log(err.response.data.message);
@@ -49,6 +50,7 @@ export const Login = () => {
         }} />
       <button onClick={() => {
         dataServer()
+        setIsLoggedIn(true)
 
       }}>Login</button>
     </div>

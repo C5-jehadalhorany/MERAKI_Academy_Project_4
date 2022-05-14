@@ -16,12 +16,14 @@ function App() {
   const [token, setToken] = useState("")
   const [message, setMessage] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(isLoggedIn);
+  console.log(setIsLoggedIn);
 
 
 
   return (
     <div className="App">
-      <tokenContext.Provider value={(isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage)}>
+      <tokenContext.Provider value={{isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage}}>
 
       <h1>جبت العيد للسيارات</h1>
         <Navbar className="Navbar" />
@@ -38,7 +40,7 @@ function App() {
 
         </Routes>
         <Asc/>
-       
+    
       </tokenContext.Provider>
     </div>
   );
