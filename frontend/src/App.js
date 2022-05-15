@@ -26,16 +26,18 @@ function App() {
         <Routes>
           
 
-          <Route path='/' element={""} />
+          <Route path='/' element={<div><Asc/></div>} />
 
           <Route path='/Register' element={<Register />} />
 
           <Route path='/Login' element={<Login />} />
 
-          <Route path='/Dashboard' element={<Dashboard />} />
+          <Route path='/Dashboard' element={<div><Dashboard /><Asc/></div>} />
+
+          <Route path='/Dashboard/:id' element={<Dashboard />} />
 
         </Routes>
-        <Asc/>
+        
     
       </tokenContext.Provider>
     </div>
@@ -43,3 +45,5 @@ function App() {
 }
 
 export default App;
+
+{/* <Route path="/profile/:id" element={<Profile />} /> */} // بدي أستخدم هاض الأشي عشان أنتقل من صفحة ل صفحه ثانيه عن طريق الأي دي الي رح يجيني من المعرف

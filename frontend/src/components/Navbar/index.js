@@ -11,6 +11,8 @@ export const Navbar = () => {
             <Link to="/Register">Register</Link>
             <Link to="/Login">Login</Link>
             <Link to="/Dashboard">Dashboard</Link>
+            
+            <Link to="/Dashboard/:id">details</Link>
     
 
 
@@ -18,3 +20,6 @@ export const Navbar = () => {
     )
 }
 export default Navbar
+
+
+{/* <Route path="/profile/:id" element={<Profile />} /> */} // بدي أستخدم هاض الأشي عشان أنتقل من صفحة ل صفحه ثانيه عن طريق الأي دي الي رح يجيني من المعرف
