@@ -4,7 +4,7 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import { Routes, Route, Link } from "react-router-dom";
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 import React, { createContext } from "react";
 import Asc from './components/getAllcars/getAllCars';
 
@@ -13,14 +13,10 @@ import Asc from './components/getAllcars/getAllCars';
 export const tokenContext = createContext()
 
 function App() {
-  const [token, setToken] = useState("")
+  const [token, setToken] = useState( localStorage.getItem("token") || "") // -> get it from localStorage
   const [message, setMessage] = useState("")
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  console.log(isLoggedIn);
-  console.log(setIsLoggedIn);
-
-
-
+  const [isLoggedIn, setIsLoggedIn] = useState(token ? true : false); // isToken ? true : false
+  
   return (
     <div className="App">
       <tokenContext.Provider value={{isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage}}>

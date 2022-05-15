@@ -1,0 +1,23 @@
+.imgChe{
+    
+    width: 250px;
+    height: 250px;
+    margin: 5px;
+    padding: 0;
+    border-style: solid;
+    
+}
+.imgFir{
+    display: inline-flex;
+    flex-direction: row;
+    width: 250px;
+    height: 250px;
+    margin: 5px;
+    border: 2px;
+    /* border-style: solid; */
+}
+.imgq{
+    display: inline-flex;
+    /* border-style: solid; */
+
+}

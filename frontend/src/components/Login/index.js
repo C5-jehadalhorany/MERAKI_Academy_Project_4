@@ -20,7 +20,7 @@ export const Login = () => {
       password: password
     }).then((result) => {
       localStorage.getItem("token")
-      console.log(result.data.token);
+      // console.log(result.data.token);
 
       if (result) {
 
@@ -28,8 +28,10 @@ export const Login = () => {
         localStorage.setItem("token", result.data.token)
         console.log(result);
         setToken(result.data.token)
-        localStorage.getItem("token")
-        setIsLoggedIn("token"?true:false )
+       
+       
+        localStorage.setItem("setIsLoggedIn",true)
+        console.log(localStorage.getItem("setIsLoggedIn"));
       
       }
     }).catch((err) => {
