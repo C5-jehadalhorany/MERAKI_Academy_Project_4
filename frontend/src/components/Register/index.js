@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import  { useState } from 'react'
+import './style.css';
 
 export const Register = () => {
   const [name, setName] = useState("")
@@ -25,33 +26,33 @@ export const Register = () => {
 
 
   return (
-    <div>
-      <p>Register</p>
-      <input type="text" placeholder='name'
+    <div className='divallreggister'>
+      <h3>Register</h3>
+      <input className='allinputR' type="text" placeholder='name'
         onChange={(e) => {
           setName(e.target.value)
         }} />
 
-      <input type="text" placeholder='age'
+      <input className='allinputR' type="text" placeholder='age'
         onChange={(e) => {
           setAge(e.target.value)
         }} />
 
-      <input type="email" placeholder='email'
+      <input className='allinputR' type="email" placeholder='email'
         onChange={(e) => {
           setEmail(e.target.value)
         }} />
 
-      <input type="password" placeholder='password'
+      <input className='allinputR' type="password" placeholder='password'
         onChange={(e) => {
           setPassword(e.target.value)
         }} />
 
-      <button onClick={dataServer}>Register</button>
+      <button className='buttonR' onClick={dataServer}>Register</button>
 
-      <p>
+      <h3>
         massage{massage}
-      </p>
+      </h3>
     </div>
 
   )

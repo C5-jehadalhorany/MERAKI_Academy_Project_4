@@ -13,6 +13,19 @@ const Asc = () => {
     const navigate = useNavigate();
     const [cars, setAllcars] = useState([])
 
+
+    const fClick = () => {
+        if (isLoggedIn === true) {
+            <div> {navigate("/")}
+
+
+            </div>
+        } else {
+            navigate("/Login")
+        }
+    }
+
+
     const Allcars = () => {
         axios.get(("http://localhost:5000/cars")
             , {

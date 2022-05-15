@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import { useContext } from 'react'
+import './style.css';
 
 
 
@@ -39,18 +40,18 @@ export const Login = () => {
     })
   }
   return (
-    <div>
-      <p>Login</p>
-      <input type="email" placeholder='email'
+    <div className='alloflogin'>
+      <h3>Login</h3>
+      <input className='inputlogin' type="email" placeholder='email'
         onChange={(e) => {
           setEmail(e.target.value)
         }} />
 
-      <input type="password" placeholder='password'
+      <input  className='inputlogin' type="password" placeholder='password'
         onChange={(e) => {
           setPassword(e.target.value)
         }} />
-      <button onClick={() => {
+      <button className='buttonstylelogin' onClick={() => {
         dataServer()
         setIsLoggedIn(true)
 

@@ -1,0 +1,22 @@
+.divallreggister{
+    display: grid;
+    justify-content: center;
+    margin: 15px;
+    border: 2px;
+    border-style: solid;
+    background-color: rgb(184, 57, 57);
+}
+.allinputR{
+    justify-content: center;
+    height: 10vh;
+    width: 60vw;
+    margin: 1%;
+}
+
+.buttonR{
+    justify-content: center;
+    height: 10vh;
+    
+    margin: 10px;
+  
+}
