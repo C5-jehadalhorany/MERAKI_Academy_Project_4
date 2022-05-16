@@ -5,7 +5,11 @@
     margin: 5px;
     padding: 0;
     border-style: solid;
+    border-color:#3BACB6;
+    background-color: #B3E8E5;;
     
+    /* border-style: double; */
+    border-radius:7px
 }
 .imgFir{
     display: inline-flex;
@@ -14,10 +18,17 @@
     height: 250px;
     margin: 5px;
     border: 2px;
+    border-radius: 2px;
+    /* background-color: #B3E8E5;; */
+    /* border-style: solid; */
+    /* border-style: double; */
+    
+    
     /* border-style: solid; */
 }
 .imgq{
     display: inline-flex;
+    /* background-color: #B3E8E5;; */
     /* border-style: solid; */
 
 }

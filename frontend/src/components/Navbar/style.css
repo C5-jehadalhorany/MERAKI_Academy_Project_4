@@ -1,12 +1,17 @@
 .Navbardiv{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: left;
     font-size: x-large;
-    background-color: rgb(70, 31, 161);
+    background-color: rgb(129, 0, 0);
     height: 10vh;
     width: 100%;
+    border-radius:7px;
+    text-decoration: none;
+    
+   
 
 }
 .logo{
-
+    border-style: solid ;
+    border-radius:7px
 }
