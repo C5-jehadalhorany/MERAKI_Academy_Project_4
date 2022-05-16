@@ -21,12 +21,12 @@ function App() {
     <div className="App">
       <tokenContext.Provider value={{isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage}}>
 
-      <h1>جبت العيد للسيارات</h1>
+      {/* <h1>جبت العيد للسيارات</h1> */}
         <Navbar className="Navbar" />
         <Routes>
           
 
-          <Route path='/' element={<div><Asc/></div>} />
+          <Route path='/' element={<div><h1>The best for cars</h1><Asc/></div>} />
 
           <Route path='/Register' element={<Register />} />
 

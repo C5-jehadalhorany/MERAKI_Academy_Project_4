@@ -1,0 +1,12 @@
+.Navbardiv{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: x-large;
+    background-color: rgb(70, 31, 161);
+    height: 10vh;
+    width: 100%;
+
+}
+.logo{
+
+}
