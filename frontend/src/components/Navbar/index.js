@@ -24,6 +24,7 @@ export const Navbar = () => {
             <Link to="/Login">Login</Link>
             <Link to="/Dashboard">Dashboard</Link>
             <Link to="/Dashboard/:id">details</Link>
+            <Link to="/">Logout</Link>
 
             <input type="text" placeholder='Search' onChange={Search} />
             
@@ -35,6 +36,7 @@ export const Navbar = () => {
                 <option value="Electricity">Electricity</option>
             </select>
 
+           
 
         </div>
     )
