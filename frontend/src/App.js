@@ -7,6 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useState ,useEffect} from 'react'
 import React, { createContext } from "react";
 import Asc from './components/getAllcars/getAllCars';
+import Details from './components/details/details';
 
 
 
@@ -34,7 +35,7 @@ function App() {
 
           <Route path='/Dashboard' element={<div><Dashboard /><Asc/></div>} />
 
-          <Route path='/Dashboard/:id' element={<Dashboard />} />
+          <Route path='/Dashboard/:id' element={<Details />} />
 
         </Routes>
         

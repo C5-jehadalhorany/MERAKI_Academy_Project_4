@@ -22,15 +22,16 @@ const Asc = () => {
         console.log(element);
         if (isLoggedIn === true) {
             <div> {navigate("/")}
-                <Link to={`/Dashboard/${id}`} onClick={navigate(`/Dashboard/${element._id}`)}>
-                    <div>
+            // useParams
+                <Link to={navigate(`/Dashboard/${element._id}`)} >
+                {setDetails( <div>
                         <p>{element.name}</p>
                         {console.log(element.name)}
                         <p>{element.model}</p>
                         <p>{element.description}</p>
                         <p>{element.status}</p>
                         <p>{element.category}</p>
-                    </div>
+                    </div>)  }
                 </Link>
             </div>
         } else {
@@ -38,16 +39,24 @@ const Asc = () => {
         }
 
     }
- const myCar=cars.filter((car)=>{
-     console.log(car);
-return car
+    const myCar = cars.filter((element, index) => {
 
- })
+        return <div>
+            <p>{element.name}</p>
+            {console.log(element.name)}
+            <p>{element.model}</p>
+            <p>{element.description}</p>
+            <p>{element.status}</p>
+            <p>{element.category}</p>
+        </div>
+
+    })
     //i need filter here and result in filtresion = setDetails 
 
     const detail = details && details.map((element, index) => {
-        
-        return <Link to={`/Dashboard/${id}`} onClick={navigate(`/Dashboard/${element._id}`)}>
+
+console.log(detail);
+        return <Link to={navigate(`/Dashboard/${element._id}`)} >
             <div>
                 <p>{element.name}</p>
                 {console.log(element.name)}
@@ -103,6 +112,7 @@ return car
     return <div>
         {list}
         {detail}
+        {/* {myCar} */}
     </div>
 }
 export default Asc
