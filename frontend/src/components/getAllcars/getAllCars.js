@@ -24,14 +24,14 @@ const Asc = () => {
             <div> {navigate("/")}
             // useParams
                 <Link to={navigate(`/Dashboard/${element._id}`)} >
-                {setDetails( <div>
+                    {setDetails(<div>
                         <p>{element.name}</p>
                         {console.log(element.name)}
                         <p>{element.model}</p>
                         <p>{element.description}</p>
                         <p>{element.status}</p>
                         <p>{element.category}</p>
-                    </div>)  }
+                    </div>)}
                 </Link>
             </div>
         } else {
@@ -51,12 +51,12 @@ const Asc = () => {
         </div>
 
     })
-    
+
     //i need filter here and result in filtresion = setDetails 
 
     const detail = details && details.map((element, index) => {
 
-console.log(detail);
+        console.log(detail);
         return <Link to={navigate(`/Dashboard/${element._id}`)} >
             <div>
                 <p>{element.name}</p>

@@ -8,7 +8,7 @@ import { useState ,useEffect} from 'react'
 import React, { createContext } from "react";
 import Asc from './components/getAllcars/getAllCars';
 import Details from './components/details/details';
-import Logout from './components/logout/logout';
+
 
 
 
@@ -37,7 +37,7 @@ function App() {
           <Route path='/Dashboard' element={<div><Dashboard /><Asc/></div>} />
 
           <Route path='/Dashboard/:id' element={<Details />} />
-          <Route path='/Logout' element={<Logout />} /> 
+        
 
         </Routes>
         
