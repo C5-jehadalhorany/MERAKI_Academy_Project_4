@@ -51,6 +51,7 @@ const Asc = () => {
         </div>
 
     })
+    
     //i need filter here and result in filtresion = setDetails 
 
     const detail = details && details.map((element, index) => {
