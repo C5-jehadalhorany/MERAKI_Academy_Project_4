@@ -1,12 +1,12 @@
 const express= require("express");
 
-const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId,AddCarsByCategory}=require("../controllers/cars");
+const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId,AddCarsByCategory,getCarCategorybyId}=require("../controllers/cars");
 
 const authentication = require("../middleware/authentication")
 
 const carsRouter =express.Router();
 
-
+carsRouter.get("/category/:id",getCarCategorybyId)
 
 carsRouter.post("/category",AddCarsByCategory)
 // all this function for cars 
@@ -17,7 +17,7 @@ carsRouter.get("/name",getCarByName)
 carsRouter.get("/:id",getCarById)
 
 //for getallcar
-carsRouter.get("/",authentication,getAllCar);
+carsRouter.get("/",getAllCar);
 
 // for add
 carsRouter.post("/",authentication,addCar);

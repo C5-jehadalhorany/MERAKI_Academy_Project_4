@@ -4,7 +4,7 @@ const CategoryModel = require("../models/category");
 
 // the function for add the cars
 const addCar = (req, res) => {
-    const { name, model, pirce, description, status, categoryer } = req.body;
+    const { name, model, pirce, description, status, categoryer,img } = req.body;
     const car = new carsModel({
         name: name,
         model: model,
@@ -12,7 +12,9 @@ const addCar = (req, res) => {
         description: description,
         status: status,
         categoryer: categoryer,
+        img:img
     });
+
     car
         .save()
         .then((result) => {
@@ -34,7 +36,7 @@ const addCar = (req, res) => {
 const getAllCar = (req, res) => {
     console.log(req.token);
     carsModel
-        .find({})
+        .find({}).populate("categoryer")
         .then((result) => {
             if (cars.length) {
                 res.status(200).json({
@@ -64,6 +66,7 @@ const getCarById = (req, res) => {
     carsModel
         .findById({ _id: id })
         .populate("_id")
+        .populate("categoryer")
         .exec()
         .then((result) => {
             console.log(result);
@@ -123,9 +126,9 @@ const getCarByName = (req, res) => {
 // updateId for cars لما بدي أستخدم الأبديت  لازم أحطله الأشياء الي بدي أعمل عليها تعديل وبعد هيك لازم أستدعي فايند باي اي دي اند اب ديت وهاي بتوخذ مني 3 براميتر الأول بتوخذه هو عباره عن الأي دي اما ثاني بتوخذه عباره عن الأشياء الي بدي أعمل عليها تعديل أما الثالث  ف هو نيو وبتوخذ قيمة بوليون ترو عشان يعمل تعديل على شي جديد
 const updateCarById = (req, res) => {
     const { id } = req.params;
-    const { model, pirce, description, status } = req.body;
+    const { model, pirce, description, status,img , categoryer  } = req.body;
     carsModel
-        .findByIdAndUpdate(id, { model, pirce, description, status }, { new: true })
+        .findByIdAndUpdate(id, { model, pirce, description, status , img ,categoryer}, { new: true })
         .then((result) => {
             console.log(result);
             if (!result) {
@@ -176,7 +179,10 @@ const deleteCarbyId = (req, res) => {
         });
 };
 
-// getCarsByCategory
+// getCarsByCategory 
+/* 
+بنسبة ألي هاض الفنكشن كان شوي في صعوبات */
+
 const AddCarsByCategory = (req, res) => {
     const { category } = req.body;
     const newCategory = new CategoryModel({
@@ -203,6 +209,37 @@ const AddCarsByCategory = (req, res) => {
 };
 ///--------------------
 
+
+const getCarCategorybyId = (req,res)=>{
+    const {id}=req.params
+    CategoryModel.findById({ _id: id })
+    .populate("_id")
+    .exec()
+    .then((result) => {
+        console.log(result);
+        if (result._id == id) {
+            res.status(200).json({
+                success: true,
+                message: `Category by id `,
+                result: result,
+            });
+        } else {
+            res.status(200).json({
+                success: false,
+                message: `No Category Yet`,
+            });
+        }
+    })
+    .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message: `Server Error`,
+            err: err.message,
+        });
+    });
+}
+
 // تصدير عشان أشوفه في مكان ثاني وأقدر أخلي الراوتر يشتغل على الفنكشن
 module.exports = {
     getAllCar,
@@ -212,4 +249,5 @@ module.exports = {
     updateCarById,
     deleteCarbyId,
     AddCarsByCategory,
+    getCarCategorybyId
 };

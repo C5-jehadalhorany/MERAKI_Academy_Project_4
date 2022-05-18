@@ -7,7 +7,8 @@ const car =new mongoose.Schema({
     description:{type:String},
     status:{type:Boolean,required:true},
     //category: objectId
-    categoryer:{ type: mongoose.Schema.Types.ObjectId, ref :"category"}
+    categoryer:{ type: mongoose.Schema.Types.ObjectId, ref :"category"},
+    img:{type:String}
 })
 
 module.exports=mongoose.model("Cars",car)
