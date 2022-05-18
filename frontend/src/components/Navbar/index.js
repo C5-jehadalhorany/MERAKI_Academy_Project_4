@@ -4,29 +4,47 @@ import { Link, useNavigate } from "react-router-dom";
 import image from "./logoss.jpg"
 import { useState, useEffect, useContext } from 'react'
 import { tokenContext } from '../../App'
-
+import axios from 'axios'
+import { useParams } from "react-router-dom";
 
 export const Navbar = () => {
+    let { id } = useParams()
     const navigate = useNavigate();
     const [value, setValue] = useState('');
+    const [searchs, setSearchs] = useState([]);
+
     const { isLoggedIn, setIsLoggedIn, token, setToken } = useContext(tokenContext)
 
     const logout = () => {
         localStorage.removeItem('token')
         setToken("")
         setIsLoggedIn(false)
-        localStorage.setItem("setIsLoggedIn",false)
+        localStorage.setItem("setIsLoggedIn", false)
 
     }
 
 
 
-    const Search = () => {
+    const search = () => {
+        axios.get(("http://localhost:5000/cars/name"),{
 
+        }).then((result)=>{
+            setSearchs(result)
+        }).catch((err)=>{
+            console.log(err);
+        })
     }
 
     const dropdownlist = (e) => {
-        setValue(e.target.value)
+        axios.get((`http://localhost:5000/cars/category/${id}`), {
+
+        }).then((result) => {
+            console.log(result);
+            setValue(result.data.result)
+        }).catch((err) => {
+            console.log(err);
+        })
+
 
     }
 
@@ -40,7 +58,7 @@ export const Navbar = () => {
             <Link to="/Dashboard/:id">details</Link>
             <Link to="/" onClick={logout}>LogOut</Link>
 
-            <input type="text" placeholder='Search' onChange={Search} />
+            <input type="text" placeholder='Search' onChange={search} />
 
 
             <select onChange={dropdownlist}>
