@@ -88,7 +88,7 @@ const Asc = () => {
 
 
     // console.log(cars);
-    const list = cars && cars.map((elemnet, index) => {
+    let list = cars && cars.map((elemnet, index) => {
         // console.log(isLoggedIn);
         // console.log(elemnet.img);
 

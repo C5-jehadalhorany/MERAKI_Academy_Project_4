@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import React, { createContext } from "react";
 import Asc from './components/getAllcars/getAllCars';
 import Details from './components/details/details';
-
+import Category from './components/category';
 
 
 
@@ -28,7 +28,7 @@ function App() {
         <Routes>
 
 
-          <Route path='/' element={<div><h1>The best for cars</h1><Asc /></div>} />
+          <Route path='/' element={<div><h1 className='nameOfBroject'>The best for cars</h1><Asc /></div>} />
 
           <Route path='/Register' element={<Register />} />
 
@@ -37,7 +37,8 @@ function App() {
           <Route path='/Dashboard' element={<div><Dashboard /><Asc /></div>} />
 
           <Route path='/Dashboard/:id' element={<Details />} />
-
+          
+          <Route path='/Dashboard/:category' element={<Category />} />
 
         </Routes>
 

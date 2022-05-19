@@ -8,10 +8,13 @@ import axios from 'axios'
 import { useParams } from "react-router-dom";
 
 export const Navbar = () => {
-    let { id } = useParams()
+
+
     const navigate = useNavigate();
-    const [value, setValue] = useState('');
+
     const [searchs, setSearchs] = useState([]);
+    const [search, setSearch] = useState([]);
+    const [carname,setCarname]=useState("")
 
     const { isLoggedIn, setIsLoggedIn, token, setToken } = useContext(tokenContext)
 
@@ -24,29 +27,22 @@ export const Navbar = () => {
     }
 
 
+    const searchcar = () => {
 
-    const search = () => {
-        axios.get(("http://localhost:5000/cars/name"),{
-
-        }).then((result)=>{
-            setSearchs(result)
-        }).catch((err)=>{
-            console.log(err);
-        })
-    }
-
-    const dropdownlist = (e) => {
-        axios.get((`http://localhost:5000/cars/category/${id}`), {
-
+        axios.get((`http://localhost:5000/cars/${carname}`), {
         }).then((result) => {
             console.log(result);
-            setValue(result.data.result)
+            setSearchs(result.data.result)
         }).catch((err) => {
             console.log(err);
         })
 
-
     }
+    useEffect(() => {
+        searchcar()
+    }, [])
+
+
 
     return (
         <div className='Navbardiv'>
@@ -58,15 +54,19 @@ export const Navbar = () => {
             <Link to="/Dashboard/:id">details</Link>
             <Link to="/" onClick={logout}>LogOut</Link>
 
-            <input type="text" placeholder='Search' onChange={search} />
+            <input type="text" placeholder='Search' onChange={(e) => {
+                console.log(true);
+                setCarname(e.target.value)
+                console.log(searchs);
+                const list = searchs && searchs.map((element) => {
+                    return <div>
+                        <p >{element.name}</p>
+                    </div>
+                })
+                setSearch(list)
+            }} />
+            {search}
 
-
-            <select onChange={dropdownlist}>
-                <option value="Hybrid">Hybrid</option>
-                <option value="diesel">diesel</option>
-                <option value="petrol">petrol</option>
-                <option value="Electricity">Electricity</option>
-            </select>
 
 
 
