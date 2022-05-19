@@ -1,11 +1,12 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
 }
 .App {
 text-align: center;
-background-color: black;
+background-color: #67696d;
 
 }
 
@@ -18,5 +19,10 @@ gap: 15px;
 }
 
 .nameOfBroject{
-   color: cornflowerblue;
+   color: rgb(255, 255, 255);
+}
+
+body{
+    height: 100%;
+    width: 100%;
 }

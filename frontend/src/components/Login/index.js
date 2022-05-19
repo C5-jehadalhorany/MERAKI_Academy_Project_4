@@ -41,7 +41,8 @@ export const Login = () => {
   }
   return (
     <div className='alloflogin'>
-      <h3>Login</h3>
+      <div className='allOflog'>
+      <h3 className='h3log'>Login</h3>
       <input className='inputlogin' type="email" placeholder='email'
         onChange={(e) => {
           setEmail(e.target.value)
@@ -56,6 +57,7 @@ export const Login = () => {
         setIsLoggedIn(true)
 
       }}>Login</button>
+      </div>
     </div>
   )
 }

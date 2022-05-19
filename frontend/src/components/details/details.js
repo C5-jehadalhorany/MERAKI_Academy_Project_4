@@ -18,7 +18,7 @@ const Details = () => {
         axios.get((`http://localhost:5000/cars/${id}`), {
 
         }).then((result) => {
-            // console.log(result);
+            console.log(result);
             setDetails(result.data.result)
             console.log(result.data.result);
             console.log(result.data.result.status);
@@ -41,8 +41,8 @@ const Details = () => {
         {/* {detail} */}
         <div><img src={details.img} className="detDiv" />
         </div>
-        <div className="clickDiv">
-            <button
+        <div >
+            <button className="clickDiv"
                 onClick={() => {
                     navigate(-1);
                 }}
@@ -53,12 +53,12 @@ const Details = () => {
 
         <div className="allDet">
             <h1 className="p">{details.name}</h1>
-            <h3>Model({details.model})</h3>
+            <h3 className="alldeta">Model({details.model})</h3>
 
-            <p>Description({details.description})</p>
-            <h3>Status({details.status + ""})</h3>
-            <h3>categoryer({categorying})</h3>
-            <h3>Price({details.pirce})</h3>
+            <p className="alldeta">Description({details.description})</p>
+            <h3 className="alldeta">Status({details.status + ""})</h3>
+            <h3 className="alldeta">categoryer({categorying})</h3>
+            <h3 className="alldeta">Price({details.pirce})</h3>
         </div>
         
 

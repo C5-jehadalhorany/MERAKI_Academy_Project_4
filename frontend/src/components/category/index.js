@@ -14,7 +14,7 @@ const Category = () => {
     const [categorying, setCategorying] = useState("")
 
     const getcarbyId = () => {
-        axios.get((`http://localhost:5000/cars/${category}`), {
+        axios.get((`http://localhost:5000/cars/carname/${category}`), {
 
         }).then((result) => {
             // console.log(result);

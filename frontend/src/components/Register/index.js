@@ -27,7 +27,8 @@ export const Register = () => {
 
   return (
     <div className='divallreggister'>
-      <h3>Register</h3>
+  < div className='allOfResiter'>
+      <h3 className='h3register'>Register</h3>
       <input className='allinputR' type="text" placeholder='name'
         onChange={(e) => {
           setName(e.target.value)
@@ -50,9 +51,10 @@ export const Register = () => {
 
       <button className='buttonR' onClick={dataServer}>Register</button>
 
-      <h3>
+      <h3 className='h3register'>
         massage{massage}
       </h3>
+      </div>
     </div>
 
   )
