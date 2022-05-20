@@ -14,9 +14,11 @@ export const Navbar = () => {
 
     const [searchs, setSearchs] = useState([]);
     const [search, setSearch] = useState([]);
-    const [carname,setCarname]=useState("")
+    const [drop,setDrop]=useState("")
 
-    const { isLoggedIn, setIsLoggedIn, token, setToken } = useContext(tokenContext)
+    // const [carname,setCarname]=useState("")
+
+    const { isLoggedIn, setIsLoggedIn, token, setToken, carname, setCarname, newSearch, setNewSearch, dropdown, setDropdown } = useContext(tokenContext)
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -28,10 +30,11 @@ export const Navbar = () => {
 
 
     const searchcar = () => {
-
-        axios.get((`http://localhost:5000/cars/${carname}`), {
+        console.log(carname);
+        axios.get((`http://localhost:5000/cars/c/${carname}`), {
         }).then((result) => {
-            console.log(result);
+            //    console.log(result);
+            setNewSearch(result.data.result)
             setSearchs(result.data.result)
         }).catch((err) => {
             console.log(err);
@@ -40,8 +43,20 @@ export const Navbar = () => {
     }
     useEffect(() => {
         searchcar()
-    }, [])
+    }, [carname])
 
+
+    const dorpdowns =()=>{
+        axios.get((`http://localhost:5000/cars/category/${drop}`)).then((result)=>{
+        console.log(result);
+        setDropdown(result.data.result)
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+    useEffect(() => {
+        dorpdowns()
+    }, [drop])
 
 
     return (
@@ -55,19 +70,24 @@ export const Navbar = () => {
             <Link to="/" onClick={logout}>LogOut</Link>
 
             <input type="text" placeholder='Search' onChange={(e) => {
-                console.log(true);
                 setCarname(e.target.value)
-                console.log(searchs);
-                const list = searchs && searchs.map((element) => {
+                // console.log(searchs);
+                const list = searchs && searchs.map((element, index) => {
                     return <div>
-                        <p >{element.name}</p>
+
                     </div>
                 })
                 setSearch(list)
             }} />
-            {search}
 
 
+            <select onChange={(e) => {setDrop(e.target.value)}}>
+                <option value=""></option>
+                <option value="diesel">diesel</option>
+                <option value="petrol">petrol</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Hybrid">Hybrid</option>
+            </select>
 
 
         </div>

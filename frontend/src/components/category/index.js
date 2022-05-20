@@ -38,12 +38,7 @@ const Category = () => {
 
     return <div className="contDiv">
 
-        <select onChange={getcarbyId()}>
-        <option value="diesel">diesel</option>
-        <option value="petrol">petrol</option>
-        <option value="Electricity">Electricity</option>
-        <option value="Hybrid">Hybrid</option>
-        </select>
+        
         <div><img src={details.img} className="detDiv" />
         </div>
         <div className="clickDiv">

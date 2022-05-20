@@ -18,10 +18,14 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || "") // -> get it from localStorage
   const [message, setMessage] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(token ? true : false); // isToken ? true : false
+  const [carname,setCarname]=useState("")
+  const [newSearch,setNewSearch]=useState("")
+  const [dropdown,setDropdown]=useState("")
+
 
   return (
     <div className="App">
-      <tokenContext.Provider value={{ isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage }}>
+      <tokenContext.Provider value={{ isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage ,carname,setCarname,newSearch,setNewSearch,dropdown,setDropdown}}>
 
         {/* <h1>جبت العيد للسيارات</h1> */}
         <Navbar className="Navbar" />

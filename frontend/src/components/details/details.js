@@ -18,11 +18,11 @@ const Details = () => {
         axios.get((`http://localhost:5000/cars/${id}`), {
 
         }).then((result) => {
-            console.log(result);
+            // console.log(result);
             setDetails(result.data.result)
-            console.log(result.data.result);
-            console.log(result.data.result.status);
-            setCategorying(result.data.result.categoryer.category)
+        
+        //    console.log(result.data.result.status);
+        setCategorying(result.data.result.categoryer.category)
         }).catch((err) => {
             console.log(err);
         })

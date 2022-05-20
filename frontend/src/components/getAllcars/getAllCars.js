@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 const Asc = () => {
     let { id } = useParams()
-    const { isLoggedIn, setIsLoggedIn } = useContext(tokenContext)
+    const { isLoggedIn, setIsLoggedIn ,carname,setCarname,newSearch,dropdown,setDropdown} = useContext(tokenContext)
     // console.log(isLoggedIn);
     const navigate = useNavigate();
     const [cars, setAllcars] = useState([])
@@ -75,16 +75,26 @@ const Asc = () => {
         axios.get(("http://localhost:5000/cars")
             , {
             }).then((result) => {
-
-                setAllcars(result.data.result)
-                console.log(setAllcars);
-            }).catch((err) => {
+                // console.log(newSearch)
+              { 
+                  { dropdown.length?setAllcars(dropdown)  : newSearch.length?
+                   setAllcars(newSearch) : setAllcars(result.data.result) }
+              
+                // console.log(setAllcars);
+            }}).catch((err) => {
                 console.log(err);
             })
     }
+
+
     useEffect(() => {
         Allcars()
-    }, [])
+    }, [dropdown])
+
+    useEffect(() => {
+        Allcars()
+    }, [newSearch])
+
 
 
     // console.log(cars);
@@ -112,7 +122,7 @@ const Asc = () => {
 
     return <div>
         {list}
-        {detail}
+        {/* {detail} */}
         {/* {myCar} */}
     </div>
 }
