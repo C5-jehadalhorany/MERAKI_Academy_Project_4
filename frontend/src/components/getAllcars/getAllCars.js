@@ -26,7 +26,7 @@ const Asc = () => {
                 <Link to={navigate(`/Dashboard/${element._id}`)} >
                     {setDetails(<div>
                         <p>{element.name}</p>
-                        {console.log(element.name)}
+                        {/* {console.log(element.name)} */}
                         <p>{element.model}</p>
                         <p>{element.description}</p>
                         <p>{element.status}</p>
@@ -43,7 +43,7 @@ const Asc = () => {
 
         return <div>
             <p>{element.name}</p>
-            {console.log(element.name)}
+            {/* {console.log(element.name)} */}
             <p>{element.model}</p>
             <p>{element.description}</p>
             <p>{element.status}</p>
@@ -60,7 +60,7 @@ const Asc = () => {
         return <Link to={navigate(`/Dashboard/${element._id}`)} >
             <div>
                 <p>{element.name}</p>
-                {console.log(element.name)}
+                {/* {console.log(element.name)} */}
                 <p>{element.model}</p>
                 <p>{element.description}</p>
                 <p>{element.status}</p>

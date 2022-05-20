@@ -13,6 +13,7 @@ const Details = () => {
     let { id } = useParams()
 
     const [categorying, setCategorying] = useState("")
+    const [status,setStatus]=useState("")
 
     const getcarbyId = () => {
         axios.get((`http://localhost:5000/cars/${id}`), {
@@ -20,9 +21,9 @@ const Details = () => {
         }).then((result) => {
             // console.log(result);
             setDetails(result.data.result)
-        
-        //    console.log(result.data.result.status);
-        setCategorying(result.data.result.categoryer.category)
+
+            //    console.log(result.data.result.status);
+            setCategorying(result.data.result.categoryer.category)
         }).catch((err) => {
             console.log(err);
         })
@@ -37,6 +38,25 @@ const Details = () => {
 
     // })
 
+    const clickForStatus = () => {
+        axios.get((`http://localhost:5000/cars/status/${id}`),{status:false}, {
+        }).then((result) => {
+            // console.log(result);
+            console.log(result.data);
+            const newSt=result.data.status=false
+            setStatus(result.data)
+            getcarbyId()
+            //    console.log(result.data.result.status);
+            
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    useEffect(() => {
+       
+    }, [])
+
+
     return <div className="contDiv">
         {/* {detail} */}
         <div><img src={details.img} className="detDiv" />
@@ -45,22 +65,27 @@ const Details = () => {
             <button className="clickDiv"
                 onClick={() => {
                     navigate(-1);
-                }}
-            >
+                }}>
                 Back
             </button>
+            <button
+                className="clickDiv2"
+                onClick={() => { clickForStatus() }}>
+                Rent
+            </button>
         </div >
+
 
         <div className="allDet">
             <h1 className="p">{details.name}</h1>
             <h3 className="alldeta">Model({details.model})</h3>
-
             <p className="alldeta">Description({details.description})</p>
             <h3 className="alldeta">Status({details.status + ""})</h3>
+          
             <h3 className="alldeta">categoryer({categorying})</h3>
             <h3 className="alldeta">Price({details.pirce})</h3>
         </div>
-        
+
 
     </div>
 }

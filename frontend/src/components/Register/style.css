@@ -4,7 +4,7 @@
   justify-content: center;
   
   border: 2px;
-  border-style: solid;
+  /* border-style: solid; */
   background-color: #67696d;
   border-radius: 7px;
 }

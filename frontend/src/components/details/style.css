@@ -38,11 +38,25 @@
   justify-self: start;
   justify-content: center;
   justify-items: center;
-  margin-top: 50vh;
+  margin-top: 35vh;
   width: 6vw;
   height: 5vh;
+  align-content: space-evenly
 }
 
 .alldeta {
   color: azure;
+}
+
+.clickDiv2{
+  display: grid;
+  background-color: rgb(87, 85, 138);
+  color: aliceblue;
+  justify-self: start;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 5vh;
+  width: 6vw;
+  height: 5vh;
+  align-content: space-evenly
 }

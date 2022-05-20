@@ -1,14 +1,14 @@
-.Navbardiv{
- display: flex;
+.Navbardiv {
+  display: flex;
   justify-content: space-between;
   width: 100vw;
   height: 7vh;
   background-color: brown;
   text-transform: capitalize;
+  align-items: center;
 }
 
-.Logo{
-  
+.Logo {
   display: flex;
   justify-items: right;
   justify-content: right;
@@ -16,24 +16,22 @@
   width: 7vw;
 }
 
-
-.AllLink{
+.AllLink {
   display: flex;
   justify-items: right;
   justify-content: right;
   justify-self: flex-start;
   margin-left: 50vh;
 }
-.DivSearchAndDrop{
+.DivSearchAndDrop {
   display: flex;
   height: 6vh;
   justify-content: center;
   justify-items: center;
   margin-top: 0.5vh;
   margin-left: 25vh;
-  
 }
 
-.Navbardiv a:hover{
+.Navbardiv a:hover {
   background-color: rgb(250, 124, 124);
 }

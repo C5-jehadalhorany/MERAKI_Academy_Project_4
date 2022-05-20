@@ -25,7 +25,7 @@ const Dashboard = () => {
     }
 
     // const details = () => {
-        // `useParams` returns an object that contains the URL parameters
+    // `useParams` returns an object that contains the URL parameters
     //     const { id } = useParams();
     //     return <div>cars id: {id}</div>;
     // };
@@ -43,8 +43,7 @@ const Dashboard = () => {
         <button
             onClick={() => {
                 navigate(-1);
-            }}
-        >
+            }}>
             Back
         </button>
     </div>
