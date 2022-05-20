@@ -33,7 +33,7 @@ function App() {
         <Routes>
 
 
-          <Route path='/' element={<div><h1 className='nameOfBroject'>The best for cars</h1><Asc /></div>} />
+          <Route path='/' element={<div><h1 className='nameOfBroject'>The best for rent cars</h1><Asc /></div>} />
 
           <Route path='/Register' element={<Register />} />
 

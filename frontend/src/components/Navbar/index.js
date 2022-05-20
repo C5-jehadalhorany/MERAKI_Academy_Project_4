@@ -64,34 +64,28 @@ export const Navbar = () => {
 
 
     return (
+
         <div className='Navbardiv'>
             <div >
                 <img src={image} className="Logo" ></img>
             </div>
-
             <div className='DivSearchAndDrop'>
                 <input type="text" placeholder='Search' onChange={(e) => {
                     if (e.target.value === "") {
                         setCarname("z")
-
                     } else {
                         setCarname(e.target.value)
                         // console.log(searchs);
                         const list = searchs && searchs.map((element, index) => {
                             return <div>
-
                             </div>
                         })
                         setSearch(list)
                     }
-
                 }} />
-
-
                 <select onChange={(e) => {
                     if (e.target.value === "") {
                         setDrop("z")
-
                     }
                     setDrop(e.target.value)
                 }}>
@@ -101,18 +95,29 @@ export const Navbar = () => {
                     <option value="Electricity">Electricity</option>
                     <option value="Hybrid">Hybrid</option>
                 </select>
-            </div>
-            <div className='AllLink'>
+            </div >
+            {token === "" ? <div className='AllLink'>
                 <Link to="/">HomePage</Link>
                 <Link to="/Register">Register</Link>
                 <Link to="/Login">Login</Link>
+                {/* <Link to="/Dashboard">Dashboard</Link>
+                <Link to="/Dashboard/:id">details</Link> */}
+
+
+            </div> : <div className='AllLink'>
+
+                <Link to="/">HomePage</Link>
                 <Link to="/Dashboard">Dashboard</Link>
                 <Link to="/Dashboard/:id">details</Link>
                 <Link to="/" onClick={logout}>LogOut</Link>
-            </div>
-
-
-
+            </div>}
+            {/* <div className='AllLink'>
+            <Link to="/Dashboard">Dashboard</Link>
+                <Link to="/Dashboard/:id">details</Link>
+                <Link to="/">HomePage</Link>
+                
+                
+            </div> */}
         </div>
     )
 }
