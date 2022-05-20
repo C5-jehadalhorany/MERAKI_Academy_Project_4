@@ -1,6 +1,6 @@
 const express= require("express");
 
-const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId,AddCarsByCategory,getCarCategorybyname,search,getCarBycaregoys}=require("../controllers/cars");
+const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId,AddCarsByCategory,getCarCategorybyname,search,getCarBycaregoys,getCarStatus}=require("../controllers/cars");
 
 const authentication = require("../middleware/authentication")
 
@@ -31,6 +31,8 @@ carsRouter.put("/:id",updateCarById)
 carsRouter.delete("/:id",deleteCarbyId)
 
 carsRouter.get("/category/:category",getCarBycaregoys)
+
+carsRouter.get("/status/:id",getCarStatus)
 
 
 

@@ -4,7 +4,7 @@ const CategoryModel = require("../models/category");
 
 // the function for add the cars
 const addCar = (req, res) => {
-    const { name, model, pirce, description, status, categoryer,img } = req.body;
+    const { name, model, pirce, description, status, categoryer, img } = req.body;
     const car = new carsModel({
         name: name,
         model: model,
@@ -12,7 +12,7 @@ const addCar = (req, res) => {
         description: description,
         status: status,
         categoryer: categoryer,
-        img:img
+        img: img
     });
 
     car
@@ -126,9 +126,9 @@ const getCarByName = (req, res) => {
 // updateId for cars لما بدي أستخدم الأبديت  لازم أحطله الأشياء الي بدي أعمل عليها تعديل وبعد هيك لازم أستدعي فايند باي اي دي اند اب ديت وهاي بتوخذ مني 3 براميتر الأول بتوخذه هو عباره عن الأي دي اما ثاني بتوخذه عباره عن الأشياء الي بدي أعمل عليها تعديل أما الثالث  ف هو نيو وبتوخذ قيمة بوليون ترو عشان يعمل تعديل على شي جديد
 const updateCarById = (req, res) => {
     const { id } = req.params;
-    const { model, pirce, description, status,img , categoryer  } = req.body;
+    const { model, pirce, description, status, img, categoryer } = req.body;
     carsModel
-        .findByIdAndUpdate(id, { model, pirce, description, status , img ,categoryer}, { new: true })
+        .findByIdAndUpdate(id, { model, pirce, description, status, img, categoryer }, { new: true })
         .then((result) => {
             console.log(result);
             if (!result) {
@@ -210,65 +210,53 @@ const AddCarsByCategory = (req, res) => {
 ///--------------------
 
 
-const getCarCategorybyname = (req,res)=>{
-    const {category}=req.params
+const getCarCategorybyname = (req, res) => {
+    const { category } = req.params
     CategoryModel.find({ category: category })
-    .populate("category")
-    .exec()
-    .then((result) => {
-        console.log(result[0].category);
-        if (result[0].category == category) {
-            res.status(200).json({
-                success: true,
-                message: `Category by id `,
-                result: result,
-            });
-        } else {
-            res.status(200).json({
+        .populate("category")
+        .exec()
+        .then((result) => {
+            console.log(result[0].category);
+            if (result[0].category == category) {
+                res.status(200).json({
+                    success: true,
+                    message: `Category by id `,
+                    result: result,
+                });
+            } else {
+                res.status(200).json({
+                    success: false,
+                    message: `No Category Yet`,
+                });
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
                 success: false,
-                message: `No Category Yet`,
+                message: `Server Error`,
+                err: err.message,
             });
-        }
-    })
-    .catch((err) => {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            message: `Server Error`,
-            err: err.message,
         });
-    });
 }
 
-
-const search= (req,res)=>{
-    const {carname} = req.params
-    carsModel.find({}).populate("categoryer").then((result)=>{
-        if(result.length){
-            result=result.filter((elemnet,index)=>{
-
+const search = (req, res) => {
+    const { carname } = req.params
+    carsModel.find({}).populate("categoryer").then((result) => {
+        if (result.length) {
+            result = result.filter((elemnet, index) => {
                 return elemnet.name.includes(carname)
-                
-
             })
             res.status(200).json({
                 success: true,
                 message: `Category by id `,
                 result: result,
             });
-
         }
-    }).catch((err)=>{
+    }).catch((err) => {
         console.log(err);
     })
-
-
 }
-
-
-
-
-
 
 const getCarBycaregoys = (req, res) => {
     const { category } = req.params;
@@ -277,26 +265,69 @@ const getCarBycaregoys = (req, res) => {
         .populate("categoryer")
         .exec()
         .then((result) => {
-            if(result.length){
-                result=result.filter((elemnet,index)=>{
-    
-                    return elemnet.categoryer.category==category
-                    
-    
+            if (result.length) {
+                result = result.filter((elemnet, index) => {
+                    return elemnet.categoryer.category == category
                 })
                 res.status(200).json({
                     success: true,
                     message: `Category by id `,
                     result: result,
                 });
-    
             }
-        }).catch((err)=>{
+        }).catch((err) => {
             console.log(err);
         })
-    
-    
-    }
+}
+
+const getCarStatus = (req, res) => {
+        Id = req.params.id;
+        status = req.body
+        carsModel
+            .findByIdAndUpdate(Id, status)
+            .then((resualt) => {
+                console.log(resualt);
+                res.status(202).json({
+                    success: true,
+                    message: "true" ,
+                    resualt: resualt,
+                });
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    success: false,
+                    message: "err" ,
+                    err: err.message,
+                });
+            });
+}
+
+
+
+// const updatepost = (req, res) => {
+//     postId = req.params.id;
+//     title = req.body
+//     postsModel
+//         .findByIdAndUpdate(postId, title)
+//         .then((resualt) => {
+//             console.log(resualt);
+//             res.status(202).json({
+//                 success: true,
+//                 message: post updated,
+//                 post: resualt,
+//             });
+//         })
+//         .catch((err) => {
+//             res.status(500).json({
+//                 success: false,
+//                 message: Server Error,
+//                 err: err.message,
+//             });
+//         });
+// };
+
+
+
 
 // تصدير عشان أشوفه في مكان ثاني وأقدر أخلي الراوتر يشتغل على الفنكشن
 module.exports = {
@@ -307,7 +338,8 @@ module.exports = {
     updateCarById,
     deleteCarbyId,
     AddCarsByCategory,
-    getCarCategorybyname
-    ,search
-,getCarBycaregoys
+    getCarCategorybyname,
+    search,
+    getCarBycaregoys,
+    getCarStatus
 };
