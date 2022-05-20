@@ -1,12 +1,14 @@
 const express= require("express");
 
-const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId,AddCarsByCategory,getCarCategorybyId}=require("../controllers/cars");
+const {getAllCar,addCar,getCarById,getCarByName,updateCarById,deleteCarbyId,AddCarsByCategory,getCarCategorybyname,search,getCarBycaregoys}=require("../controllers/cars");
 
 const authentication = require("../middleware/authentication")
 
 const carsRouter =express.Router();
 
-carsRouter.get("/category/:id",getCarCategorybyId)
+carsRouter.get("/c/:carname",search)
+
+// carsRouter.get("/category/:category",getCarCategorybyname)
 
 carsRouter.post("/category",AddCarsByCategory)
 // all this function for cars 
@@ -28,6 +30,7 @@ carsRouter.put("/:id",updateCarById)
 //for delete 
 carsRouter.delete("/:id",deleteCarbyId)
 
+carsRouter.get("/category/:category",getCarBycaregoys)
 
 
 

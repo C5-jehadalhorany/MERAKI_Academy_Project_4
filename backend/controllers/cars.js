@@ -210,14 +210,14 @@ const AddCarsByCategory = (req, res) => {
 ///--------------------
 
 
-const getCarCategorybyId = (req,res)=>{
-    const {id}=req.params
-    CategoryModel.findById({ _id: id })
-    .populate("_id")
+const getCarCategorybyname = (req,res)=>{
+    const {category}=req.params
+    CategoryModel.find({ category: category })
+    .populate("category")
     .exec()
     .then((result) => {
-        console.log(result);
-        if (result._id == id) {
+        console.log(result[0].category);
+        if (result[0].category == category) {
             res.status(200).json({
                 success: true,
                 message: `Category by id `,
@@ -240,6 +240,64 @@ const getCarCategorybyId = (req,res)=>{
     });
 }
 
+
+const search= (req,res)=>{
+    const {carname} = req.params
+    carsModel.find({}).populate("categoryer").then((result)=>{
+        if(result.length){
+            result=result.filter((elemnet,index)=>{
+
+                return elemnet.name.includes(carname)
+                
+
+            })
+            res.status(200).json({
+                success: true,
+                message: `Category by id `,
+                result: result,
+            });
+
+        }
+    }).catch((err)=>{
+        console.log(err);
+    })
+
+
+}
+
+
+
+
+
+
+const getCarBycaregoys = (req, res) => {
+    const { category } = req.params;
+    carsModel
+        .find({})
+        .populate("categoryer")
+        .exec()
+        .then((result) => {
+            if(result.length){
+                result=result.filter((elemnet,index)=>{
+    
+                    return elemnet.categoryer.category==category
+                    
+    
+                })
+                res.status(200).json({
+                    success: true,
+                    message: `Category by id `,
+                    result: result,
+                });
+    
+            }
+        }).catch((err)=>{
+            console.log(err);
+        })
+    
+    
+    }
+
 // تصدير عشان أشوفه في مكان ثاني وأقدر أخلي الراوتر يشتغل على الفنكشن
 module.exports = {
     getAllCar,
@@ -249,5 +307,7 @@ module.exports = {
     updateCarById,
     deleteCarbyId,
     AddCarsByCategory,
-    getCarCategorybyId
+    getCarCategorybyname
+    ,search
+,getCarBycaregoys
 };
