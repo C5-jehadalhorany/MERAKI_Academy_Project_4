@@ -1,28 +1,38 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .App {
-text-align: center;
-background-color: #67696d;
-
+  text-align: center;
+  background-color: #67696d;
+  height: 100vh;
 }
 
 a {
-margin: 15px;
-color: rgb(238, 235, 221);
-margin-top: 10px;
-text-decoration: none;
-gap: 15px;
+  margin: 6px;
+  color: rgb(255, 208, 0);
+  text-decoration: none;
+  justify-items:center ;
+  justify-content: center;
+  
 }
 
-.nameOfBroject{
-   color: rgb(255, 255, 255);
+
+.nameOfBroject {
+  color: rgb(255, 208, 0);
 }
 
-body{
-    height: 100%;
-    width: 100%;
+
+
+/* .allcont {
+  text-align: center;
+  background-color: #67696d;
+  height: 100vh;
+} */
+
+.divimg{
+    text-align: center;
+    background-color: #67696d;
+    
 }

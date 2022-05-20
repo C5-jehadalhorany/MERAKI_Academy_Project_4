@@ -9,16 +9,13 @@
   justify-content: center;
   border-radius: 7px;
   border-style: solid;
-  
 
-margin-top:15vh;
+  margin-top: 15vh;
   background-color: #19162c;
   border-color: rgb(182, 182, 182);
 }
 .allDet {
   display: grid;
-  width: 50vw;
-  height: 50vh;
   justify-content: center;
   border-radius: 7px;
   border-style: solid;
@@ -29,8 +26,9 @@ margin-top:15vh;
 
 .contDiv {
   display: flex;
-  height: 100vh;
-  margin: 10px;
+  
+  width: 100vw;
+
 }
 
 .clickDiv {
@@ -45,6 +43,6 @@ margin-top:15vh;
   height: 5vh;
 }
 
-.alldeta{
-    color: azure;
+.alldeta {
+  color: azure;
 }

@@ -12,9 +12,9 @@ export const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const [searchs, setSearchs] = useState([]);
-    const [search, setSearch] = useState([]);
-    const [drop,setDrop]=useState("")
+    const [searchs, setSearchs] = useState("");
+    const [search, setSearch] = useState("");
+    const [drop, setDrop] = useState("")
 
     // const [carname,setCarname]=useState("")
 
@@ -29,13 +29,17 @@ export const Navbar = () => {
     }
 
 
+
     const searchcar = () => {
         console.log(carname);
+
         axios.get((`http://localhost:5000/cars/c/${carname}`), {
         }).then((result) => {
             //    console.log(result);
+
             setNewSearch(result.data.result)
             setSearchs(result.data.result)
+            console.log(result.data.result);
         }).catch((err) => {
             console.log(err);
         })
@@ -46,11 +50,11 @@ export const Navbar = () => {
     }, [carname])
 
 
-    const dorpdowns =()=>{
-        axios.get((`http://localhost:5000/cars/category/${drop}`)).then((result)=>{
-        console.log(result);
-        setDropdown(result.data.result)
-        }).catch((err)=>{
+    const dorpdowns = () => {
+        axios.get((`http://localhost:5000/cars/category/${drop}`)).then((result) => {
+            console.log(result);
+            setDropdown(result.data.result)
+        }).catch((err) => {
             console.log(err);
         })
     }
@@ -61,33 +65,52 @@ export const Navbar = () => {
 
     return (
         <div className='Navbardiv'>
-            <img src={image} className="logo"></img>
-            <Link to="/">HomePage</Link>
-            <Link to="/Register">Register</Link>
-            <Link to="/Login">Login</Link>
-            <Link to="/Dashboard">Dashboard</Link>
-            <Link to="/Dashboard/:id">details</Link>
-            <Link to="/" onClick={logout}>LogOut</Link>
+            <div >
+                <img src={image} className="Logo" ></img>
+            </div>
 
-            <input type="text" placeholder='Search' onChange={(e) => {
-                setCarname(e.target.value)
-                // console.log(searchs);
-                const list = searchs && searchs.map((element, index) => {
-                    return <div>
+            <div className='DivSearchAndDrop'>
+                <input type="text" placeholder='Search' onChange={(e) => {
+                    if (e.target.value === "") {
+                        setCarname("z")
 
-                    </div>
-                })
-                setSearch(list)
-            }} />
+                    } else {
+                        setCarname(e.target.value)
+                        // console.log(searchs);
+                        const list = searchs && searchs.map((element, index) => {
+                            return <div>
+
+                            </div>
+                        })
+                        setSearch(list)
+                    }
+
+                }} />
 
 
-            <select onChange={(e) => {setDrop(e.target.value)}}>
-                <option value=""></option>
-                <option value="diesel">diesel</option>
-                <option value="petrol">petrol</option>
-                <option value="Electricity">Electricity</option>
-                <option value="Hybrid">Hybrid</option>
-            </select>
+                <select onChange={(e) => {
+                    if (e.target.value === "") {
+                        setDrop("z")
+
+                    }
+                    setDrop(e.target.value)
+                }}>
+                    <option value=""></option>
+                    <option value="diesel">diesel</option>
+                    <option value="petrol">petrol</option>
+                    <option value="Electricity">Electricity</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+            </div>
+            <div className='AllLink'>
+                <Link to="/">HomePage</Link>
+                <Link to="/Register">Register</Link>
+                <Link to="/Login">Login</Link>
+                <Link to="/Dashboard">Dashboard</Link>
+                <Link to="/Dashboard/:id">details</Link>
+                <Link to="/" onClick={logout}>LogOut</Link>
+            </div>
+
 
 
         </div>

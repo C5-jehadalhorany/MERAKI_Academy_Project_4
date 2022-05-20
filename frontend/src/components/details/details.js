@@ -49,7 +49,7 @@ const Details = () => {
             >
                 Back
             </button>
-        </div>
+        </div >
 
         <div className="allDet">
             <h1 className="p">{details.name}</h1>

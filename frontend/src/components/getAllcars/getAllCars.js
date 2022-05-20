@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 const Asc = () => {
     let { id } = useParams()
-    const { isLoggedIn, setIsLoggedIn ,carname,setCarname,newSearch,dropdown,setDropdown} = useContext(tokenContext)
+    const { isLoggedIn, setIsLoggedIn, carname, setCarname, newSearch, dropdown, setDropdown } = useContext(tokenContext)
     // console.log(isLoggedIn);
     const navigate = useNavigate();
     const [cars, setAllcars] = useState([])
@@ -76,12 +76,14 @@ const Asc = () => {
             , {
             }).then((result) => {
                 // console.log(newSearch)
-              { 
-                  { dropdown.length?setAllcars(dropdown)  : newSearch.length?
-                   setAllcars(newSearch) : setAllcars(result.data.result) }
-              
-                // console.log(setAllcars);
-            }}).catch((err) => {
+                {
+                    {
+                        dropdown ? setAllcars(dropdown) : newSearch.length ?
+                            setAllcars(newSearch) : setAllcars(result.data.result)
+                    }
+                    // console.log(setAllcars);
+                }
+            }).catch((err) => {
                 console.log(err);
             })
     }

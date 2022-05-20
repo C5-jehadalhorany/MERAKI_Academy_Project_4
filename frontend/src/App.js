@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <div allcont>
       <tokenContext.Provider value={{ isLoggedIn, setIsLoggedIn, token, setToken, message, setMessage ,carname,setCarname,newSearch,setNewSearch,dropdown,setDropdown}}>
 
         {/* <h1>جبت العيد للسيارات</h1> */}
@@ -38,7 +39,7 @@ function App() {
 
           <Route path='/Login' element={ <Login />}  />
 
-          <Route path='/Dashboard' element={<div><Dashboard /><Asc /></div>} />
+          <Route path='/Dashboard' element={<div className='divimg'><Dashboard /><Asc /></div>} />
 
           <Route path='/Dashboard/:id' element={<Details />} />
           
@@ -48,6 +49,7 @@ function App() {
 
 
       </tokenContext.Provider>
+      </div>
     </div>
   );
 }
