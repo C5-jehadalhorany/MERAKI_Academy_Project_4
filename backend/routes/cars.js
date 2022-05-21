@@ -32,7 +32,7 @@ carsRouter.delete("/:id",deleteCarbyId)
 
 carsRouter.get("/category/:category",getCarBycaregoys)
 
-carsRouter.get("/status/:id",getCarStatus)
+carsRouter.put("/status/:id",getCarStatus)
 
 
 

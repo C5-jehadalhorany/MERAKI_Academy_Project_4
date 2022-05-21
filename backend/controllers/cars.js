@@ -280,11 +280,12 @@ const getCarBycaregoys = (req, res) => {
         })
 }
 
+
 const getCarStatus = (req, res) => {
-        Id = req.params.id;
+    _id = req.params.id;
         status = req.body
         carsModel
-            .findByIdAndUpdate(Id, status)
+            .findByIdAndUpdate(_id, status)
             .then((resualt) => {
                 console.log(resualt);
                 res.status(202).json({
