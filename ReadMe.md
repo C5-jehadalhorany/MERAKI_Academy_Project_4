@@ -27,19 +27,20 @@ Write about 1-2 paragraphs describing the purpose of your project.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-
-
-
 ### Prerequisites
 
 What things you need to install the software and how to install them.
 vscode <a>https://code.visualstudio.com/</a>
+
 <p>طريقة التنزيل عن طريق كلمة Download for Windows </p>
-  MongoDBCompass   <a>https://www.mongodb.com/products/compass</a>
+  MongoDBCompass   
+  <a>https://www.mongodb.com/products/compass</a>
   <p>طريقة التنزيل عن طريق كلمة Download Now</p>
-   postman   <a>https://www.postman.com/downloads/</a>
+   postman 
+     <a>https://www.postman.com/downloads/</a>
   <p>طريقة التنزيل عن طريق كلمة windows 64-bit</p>
-  git bash   <a>https://git-scm.com/download/win</a>
+  git bash 
+    <a>https://git-scm.com/download/win</a>
   <p>طريقة التنزيل عن طريق كلمة Click here to download</p>
 ```
 Give examples
@@ -48,19 +49,17 @@ Give examples
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running.
-1-clone the repo to your local machine using git bash 
-git clone https://githup.com/your_username_/project-name.git 
+1-clone the repo to your local machine using git bash
+git clone https://githup.com/your_username_/project-name.git
 
 2- install packeges repeat this step in backend and forntend folder
-npm i 
+npm i
 
 3- Run server using git bash inside backend folder
-npm run dev 
+npm run dev
 
-4-Run application using git bash inside frontend folder 
-npm run start 
-
-
+4-Run application using git bash inside frontend folder
+npm run start
 
 Say what the step will be
 
@@ -90,7 +89,6 @@ End with an example of getting some data out of the system or using it for a lit
 <p>the same email and password</p>
 <img src="./login.jpg">
 
-
 <p>image for see the Das</p>
 <p>can add the img in the app</p>
 <img src="./Das.jpg">
@@ -114,7 +112,8 @@ Add notes about how to use the system.
 
 <a>https://trello.com/b/qcQbXztq/simple-project-cars</a>
 <img src="./Untitled.png">
+
 ## ⚠️ Guided By <a name = "guided_by"></a>
+
 <p>[MERAKI Academy]</p>
 This project is guided by ©️ **[MERAKI Academy](https://www.meraki-academy.org)**
-
