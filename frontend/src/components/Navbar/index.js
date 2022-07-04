@@ -1,7 +1,7 @@
 import './style.css';
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom";
-import image from "./logoss.jpg"
+import image from "./logo.jpg"
 import { useState, useEffect, useContext } from 'react'
 import { tokenContext } from '../../App'
 import axios from 'axios'

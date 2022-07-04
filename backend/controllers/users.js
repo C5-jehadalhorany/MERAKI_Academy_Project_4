@@ -17,7 +17,7 @@ const register =(req ,res)=>{
     }).catch((err)=>{
         res.status(409).json({
             success: false,
-            message: `The email already exists`,
+            message: `${err} err in register`,
         });
     })
 };

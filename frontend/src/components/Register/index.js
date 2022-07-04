@@ -2,8 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import  { useState } from 'react'
 import './style.css';
+import { useNavigate } from 'react-router-dom'
 
 export const Register = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("")
   const [age, setAge] = useState(0)
   const [email, setEmail] = useState("")
@@ -17,7 +19,9 @@ export const Register = () => {
       email: email,
       password: password
     }).then((result) => {
+      console.log(result);
       setMassage(result);
+      navigate("/Login")
 
     }).catch((err) => {
       setMassage(err.response.data.message);
